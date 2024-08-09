@@ -1,0 +1,25 @@
+version: '3'
+services:
+  api-auth:
+    container_name: api-auth
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # deploy:
+    #   resources:
+    #     limits:
+    #       cpus: '0.5'
+    #       memory: '5g' 
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/home 
+    networks:
+        - api-restfull_default
+    entrypoint: home/entrypoint.sh  
+    
+networks:
+    api-restfull_default:
+      external: true          
+    
+    

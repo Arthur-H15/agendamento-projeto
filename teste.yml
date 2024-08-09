@@ -1,0 +1,11 @@
+config:
+  target: 'http://localhost:3000'  # Replace with your target URL
+  phases:
+    - arrivalRate: 1000  # 100 virtual users per second
+      duration: 6  # Load for 60 seconds
+scenarios:
+  - name: 'Shopping Journey'
+    flow:
+     - get:
+        url: '/'  # Homepage
+            
