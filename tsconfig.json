@@ -19,6 +19,7 @@
     "noFallthroughCasesInSwitch": false,
     "paths": {
       "@entidades/*": ["src/dominio/entidades/*"],
+      "@database/*":["src/infraestrutura/databases/*"]
     }
   }
 }

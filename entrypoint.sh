@@ -3,7 +3,7 @@ cd ./home
 # Instala as dependências
 npm install
 # Instale o Jest
-npm install jest
+# npm install jest
 
 
 # Executar os testes Jest 
@@ -12,4 +12,4 @@ npm install jest
 # npm run migrate
 
 # Inicia o servidor
-npm run start:dev
+npm run start:debug

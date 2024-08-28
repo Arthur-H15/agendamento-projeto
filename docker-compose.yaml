@@ -16,8 +16,35 @@ services:
       - .:/home 
     networks:
         - api-restfull_default
-    entrypoint: home/entrypoint.sh  
+    entrypoint: home/entrypoint.sh
+    depends_on:
+      - db   
     
+  db:
+    container_name : db
+    image: postgres:latest
+    environment:
+      POSTGRES_PASSWORD: mysecretpassword
+    volumes:
+      - ./db:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+        - api-restfull_default    
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@pgadmin.org
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    # volumes:
+    #   - ./pgadmin:/var/lib/pgadmin
+    depends_on:
+      - db   
+    networks:
+        - api-restfull_default  
+ 
 networks:
     api-restfull_default:
       external: true          
