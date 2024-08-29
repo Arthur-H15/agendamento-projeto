@@ -1,6 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, OneToMany } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
 import { AgendamentoEntity } from './agendamento.entity';
-import { UsuarioEntity } from './usuario.entity';
+
 
 
 
@@ -18,8 +18,8 @@ export class ProcedimentoEntity {
   @Column()
   descricao: string;
 
-  // @OneToMany(() => AgendamentoEntity, (agendamento) => agendamento.procedimento)
-  // agendamentos: AgendamentoEntity[];
+  @OneToMany(() => AgendamentoEntity, (agendamento) => agendamento.idProcedimento2)
+  agendamentos: AgendamentoEntity[];
 
   // @ManyToOne(() => UsuarioEntity)
   // @JoinColumn({ name: 'idUsuario' })

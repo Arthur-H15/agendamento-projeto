@@ -17,8 +17,10 @@ export class AgendamentoEntity {
 
   @Column()
   descricao: string;
-  @Column()
+  @Column({type: "int", name: "id_usuario" })
   idUsuario: number;
+  @Column({type: "int", name: "id_procedimento" })
+  idProcedimento: number;
   
   // @ManyToOne(() => Clientes, (clientes) => clientes.condominios, {
   //   onDelete: "NO ACTION",
@@ -30,50 +32,30 @@ export class AgendamentoEntity {
   @ManyToOne(() => UsuarioEntity,(usuarioEntity)=>usuarioEntity.agendamentos)
   @JoinColumn([{ name: "id_usuario", referencedColumnName: "id" }])
   idUsuario2: number;
-
+  @ManyToOne(() => ProcedimentoEntity,(procedimentoEntity)=>procedimentoEntity.agendamentos)
+  @JoinColumn([{ name: "id_procedimentos", referencedColumnName: "id" }])
+  idProcedimento2: number;
   // @ManyToOne(() => ProcedimentoEntity)
   // @JoinColumn({ name: 'idProcedimento' })
   // procedimento: ProcedimentoEntity;
 }
-import {
-  Column,
-  Entity,
-  Index,
-  JoinColumn,
-  JoinTable,
-  ManyToMany,
-  ManyToOne,
-  OneToMany,
-  PrimaryGeneratedColumn,
-} from "typeorm";
-import { ConsumoObjetivoHora } from "./ConsumoObjetivoHora";
-import { Fechamentos } from "./Fechamentos";
-import { GrupoEnvioAlertas } from "./GrupoEnvioAlertas";
-import { HistoricoAlarmes } from "./HistoricoAlarmes";
-import { HistoricoEstouroDeConsumo } from "./HistoricoEstouroDeConsumo";
-import { Leituras } from "./Leituras";
-import { UnidadesMedida } from "./UnidadesMedida";
-import { Imoveis } from "./Imoveis";
-import { Modems } from "./Modems";
-import { TiposMedidor } from "./TiposMedidor";
-import { Telas } from "./Telas";
-import { MedidoresTela } from "./MedidoresTela";
 
 
-@Index("serial_hidrometro_UNIQUE", ["serialMedidor"], { unique: true })
-@Index("serial_radio_UNIQUE", ["serialRadio"], { unique: true })
-@Index("fk_medidor_especificacao_medidor_tipo1_idx", ["idTipoMedidor"], {})
-@Index("valencia_INDEX", ["valencia"], {})
-@Index(
-  "fk_especificacoes_medidores_unidades_medida1_idx",
-  ["idUnidadeMedida"],
-  {}
-)
-@Index("fk_medidores_apartamentos1_idx", ["idImovel"], {})
-@Index("serial_INDEX", ["serialMedidor"], {})
-@Index("fk_medidores_modems1_idx", ["idModem"], {})
-@Index("serial_radio_INDEX", ["serialRadio"], {})
-@Entity("medidores", { schema: "mindi" })
+
+// @Index("serial_hidrometro_UNIQUE", ["serialMedidor"], { unique: true })
+// @Index("serial_radio_UNIQUE", ["serialRadio"], { unique: true })
+// @Index("fk_medidor_especificacao_medidor_tipo1_idx", ["idTipoMedidor"], {})
+// @Index("valencia_INDEX", ["valencia"], {})
+// @Index(
+//   "fk_especificacoes_medidores_unidades_medida1_idx",
+//   ["idUnidadeMedida"],
+//   {}
+// )
+// @Index("fk_medidores_apartamentos1_idx", ["idImovel"], {})
+// @Index("serial_INDEX", ["serialMedidor"], {})
+// @Index("fk_medidores_modems1_idx", ["idModem"], {})
+// @Index("serial_radio_INDEX", ["serialRadio"], {})
+// @Entity("medidores", { schema: "mindi" })
 // export class Medidores {
 //   @PrimaryGeneratedColumn({ type: "int", name: "id" })
 //   id: number;
