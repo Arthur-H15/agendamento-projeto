@@ -14,8 +14,8 @@ services:
       - "3000:3000"
     volumes:
       - .:/home 
-    networks:
-        - api-restfull_default
+    # networks:
+    #     - api-restfull_default
     entrypoint: home/entrypoint.sh
     depends_on:
       - db   
@@ -25,12 +25,13 @@ services:
     image: postgres:latest
     environment:
       POSTGRES_PASSWORD: mysecretpassword
+      POSTGRES_DB: testeAgendamento
     volumes:
       - ./db:/var/lib/postgresql/data
     ports:
       - "5432:5432"
-    networks:
-        - api-restfull_default    
+    # networks:
+    #     - api-restfull_default    
   pgadmin:
     image: dpage/pgadmin4
     environment:
@@ -42,11 +43,11 @@ services:
     #   - ./pgadmin:/var/lib/pgadmin
     depends_on:
       - db   
-    networks:
-        - api-restfull_default  
+    # networks:
+    #     - api-restfull_default  
  
-networks:
-    api-restfull_default:
-      external: true          
+# networks:
+#     api-restfull_default:
+#       external: true          
     
     

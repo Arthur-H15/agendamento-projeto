@@ -18,11 +18,11 @@ export class ProcedimentoEntity {
   @Column()
   descricao: string;
 
-  @OneToMany(() => AgendamentoEntity, (agendamento) => agendamento.procedimento)
-  agendamentos: AgendamentoEntity[];
+  // @OneToMany(() => AgendamentoEntity, (agendamento) => agendamento.procedimento)
+  // agendamentos: AgendamentoEntity[];
 
-  @ManyToOne(() => UsuarioEntity)
-  @JoinColumn({ name: 'idUsuario' })
-  usuario: UsuarioEntity;
+  // @ManyToOne(() => UsuarioEntity)
+  // @JoinColumn({ name: 'idUsuario' })
+  // usuario: UsuarioEntity;
 }
 

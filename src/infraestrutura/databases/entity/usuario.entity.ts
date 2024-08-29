@@ -19,6 +19,6 @@ export class UsuarioEntity {
   excluido: string;
 
 
-  @OneToMany(() => AgendamentoEntity, (agendamento) => agendamento.procedimento)
+  @OneToMany(() => AgendamentoEntity, (agendamento) => agendamento.usuario)
   agendamentos: AgendamentoEntity[];
 }
